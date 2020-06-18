@@ -4,6 +4,8 @@ import 'package:destini_challenge_starting/story.dart';
 //TODO: Step 5 - Create a new class called StoryBrain.
 
 class StoryBrain {
+  int storyNumber = 0;
+
 //TODO: Step 7 - Uncomment the lines below to include storyData as a private property in StoryBrain. Hint: You might need to change something in story.dart to make this work.
 
   List<Story> _storyData = [
@@ -39,21 +41,34 @@ class StoryBrain {
   ];
 
   Story getStory() {
-    return _storyData[0];
+    return _storyData[storyNumber];
   }
 
   String getChoice1(){
-    return _storyData[0].choice1;
+    return _storyData[storyNumber].choice1;
   }
 
   String getChoice2(){
-    return _storyData[0].choice2;
+    return _storyData[storyNumber].choice2;
   }
 
-  int storyNumber = 0;
+
 
   void nextStory (int choiceNumber) {
     print(choiceNumber);
+    if (choiceNumber == 1 && storyNumber == 0) {
+      storyNumber = 2;
+    } else if (choiceNumber == 2 && storyNumber == 0) {
+      storyNumber = 1;
+    } else if (choiceNumber == 1 && storyNumber == 1) {
+      storyNumber = 2;
+    } else if (choiceNumber == 2 && storyNumber == 1) {
+      storyNumber = 3;
+    } else if (choiceNumber == 1 && storyNumber == 2) {
+      storyNumber = 5;
+    } else if (choiceNumber == 2 && storyNumber == 2) {
+      storyNumber = 4;
+    }
   }
 }
 
